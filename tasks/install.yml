@@ -34,7 +34,7 @@
     path: "{{ grub_default_path }}"
     regexp: "^{{ item.name }}="
     line: '{{ item.name }}="{{ item.value }}"'
-    # validate: "{{ _grub_validation[ansible_distribution] | default(_grub_validation['default']) }} /etc/default/grub"
+    # validate: "{{ _grub_validation[ansible_facts.distribution] | default(_grub_validation['default']) }} /etc/default/grub"
     create: true
     mode: "0664"
   with_items: "{{ grub_options }}"
